@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net;">
+    <title>File Upload</title>
+</head>
+<body>
+    <label for="fileInput">Choose a file:</label>
+    <input type="file" id="fileInput">
+    <button id="uploadButton">Upload</button>
+    <button id="listButton">List Files</button>    
+    <div id="status"></div>
+    <div id="fileList"></div>
+    <select id="addressSelect"></select>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ipfs-http-client/dist/index.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

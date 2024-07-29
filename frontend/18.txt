@@ -1,0 +1,60 @@
+
+const int RELAY_PIN = 10;
+const int rpmpin=7;
+long time_init;
+int sf = 0;
+float rpm =0;
+void setup()
+{
+pinMode(rpmpin, INPUT);
+pinMode(RELAY_PIN, OUTPUT);
+Serial.begin(9600);
+
+}
+void loop()
+{
+    while(rpm>20 || sf ==0){
+    digitalWrite(RELAY_PIN, HIGH);
+    
+  
+  
+
+  rpm = find_rpm();
+  Serial.print("rpm:");
+  Serial.println(rpm);
+
+  
+  if(rpm<20){
+    digitalWrite(RELAY_PIN, LOW);
+    Serial.println("off");
+    break;
+
+  }
+  delay(1000*5);
+    }
+}
+
+float find_rpm() {
+  int N=0;
+  long init_time = millis();
+
+  while ((millis() - init_time) < 1000) {   
+         
+          // Sensor voltage
+   if(digitalRead(rpmpin)==HIGH){           
+      N=N+1;
+   }
+    //  Serial.print("N: ");
+    // Serial.println(N);
+    delay(100);
+
+  }
+
+
+
+  float rpm = N*60;                   // RMS equation
+  return rpm;
+}
+  
+
+
